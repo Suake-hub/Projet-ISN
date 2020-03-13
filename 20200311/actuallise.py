@@ -31,7 +31,7 @@ def refresh(wdw, debug, salle, curX, curY, mur, sol, flag, rock, win, defeat, sp
         door = pygame.image.load("sprite/closedoor.png").convert_alpha()
         buton = pygame.image.load("sprite/redbuton.png").convert_alpha()
     if debug == 1:
-        print("Actuallisation \ncurX={0} \ncurY={1} \ncurXpast={2} \ncurYpast={3} \ntour={4} \nnpdtp={5} \nnpdtp={6}".format(curX, curY, curXpast, curYpast, tour, npdt, npdtp))
+        print("\nActuallisation \ncurX={0} \ncurY={1} \ncurXpast={2} \ncurYpast={3} \ntour={4} \nnpdt={5} \nnpdtp={6}".format(curX, curY, curXpast, curYpast, tour, npdt, npdtp))
     for x in range(0 ,11):
         for y in range(0, 20):
             if salle[x,y] == 0:
@@ -61,6 +61,7 @@ def refresh(wdw, debug, salle, curX, curY, mur, sol, flag, rock, win, defeat, sp
                 wdw.blit(sol,(y*80, x*80))
                 wdw.blit(setr,(y*80,x*80))
                 wdw.blit(rock,(y*80,x*80))
+                npdt += 1
         if etat == 1:
             wdw.blit(perso1,(curY*80,curX*80))
         if etat == 2:
