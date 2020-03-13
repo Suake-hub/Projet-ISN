@@ -1,5 +1,6 @@
 import pygame
 import main
+import time
 from pygame.locals import *
 
 red = (200,0,0)
@@ -7,7 +8,10 @@ green = (0,200,0)
 blue = (0,0,200)
 white = (255,255,255)
 wdw=pygame.display.set_mode((1600,880))
-
+# pour savoir de quel niveau il sort
+niveau = int
+# Pour savoir si quand il sort du niveau, il est fini
+toutfini = int
 def menuprincipal():
     fond = pygame.image.load("sprite/menu.png").convert_alpha()
     wdw.blit(fond, (0,0))
@@ -39,6 +43,10 @@ def menuprincipal():
                     pygame.quit()
                     quit()
 def menulevel():
+    # pour savoir de quel niveau il sort
+    niveau = int
+    # Pour savoir si quand il sort du niveau, il est fini
+    toutfini = 0
     continuer = True
     fond = pygame.image.load("sprite/menu.png").convert_alpha()
     wdw.blit(fond, (0,0))
@@ -51,9 +59,23 @@ def menulevel():
                 if event.type == MOUSEBUTTONUP:
                     if event.button == 1:
                         if btlevel_1.collidepoint(event.pos):
-                            main.jeu(1)
+                            niveau, toutfini = main.jeu(1)
+                            print("Dans menu level, niveau = {0}. Il a fini {1}".format(niveau, toutfini))
                         if btlevel_2.collidepoint(event.pos):
-                            main.jeu(2)
+                            niveau, toutfini = main.jeu(2)
+                            print("Dans menu level, niveau = {0}. Il a fini {1}".format(niveau, toutfini))
                         if btback.collidepoint(event.pos):
                             menuprincipal()
-menuprincipal()
+                        #toutfini : Si = 1 : il a fini le niveau, si = 0 il ne l'a pas fini, si = 2 : il est mort
+                        if toutfini == 1:
+                            time.sleep(1)
+                            menuprincipal()
+                        elif toutfini == 0:
+                            time.sleep(0.5)
+                            menuprincipal()
+                        elif toutfini == 2:
+                            time.sleep(0.5)
+                            menuprincipal()
+#pour que menuprincipal() ne ce lance pas quand on importe le fichier
+if __name__ == '__main__':
+    menuprincipal()
