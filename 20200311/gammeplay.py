@@ -22,13 +22,14 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
     cailX=int
     cailY=int
     status=int
+    niveau = int
     while True:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN: 
                 if event.key == pygame.K_DOWN:
                     etat = 1
                     curX, curY, status, porte = push(curX, curY, salle, debug, etat, wdw, porte)
-                    if debug ==1:
+                    if debug == 1:
                         print("\ncurX={0} \ncurY={1} \nstatus={2} \netat={3}".format(curX, curY, status, etat))
                     if salle[curX, curY] == 2:
                         salle[curX, curY] = 0
@@ -36,7 +37,7 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                         cailX, cailY = curX, curY
                         while verifc==0:
                             if debug == 1 :
-                                print("\ncailX {0}\ncailY {1}".format(cailX,cailY))
+                                print("cailX {0}\ncailY {1}".format(cailX,cailY))
                             if salle[cailX+1, cailY] == 0 or salle[cailX+1, cailY] == 3 or salle[cailX+1, cailY] == 6:
                                 verifc=1
                                 salle[cailX+1, cailY] = 2
@@ -57,15 +58,14 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                             if event.key == pygame.K_ESCAPE:
                                 if debug ==1:
                                     print("\nArrêt")
-                                pygame.quit()
-                                quit()
+                                return niveau, wdw, 0
                     if salle[curX, curY] == 8:
                         salle[curX, curY] = 5
-                        verifc=0
+                        verifc = 0
                         cailX, cailY = curX, curY
-                        while verifc==0:
+                        while verifc== 0:
                             if debug == 1 :
-                                print("\ncailX {0}\ncailY {1}".format(cailX,cailY))
+                                print("cailX {0}\ncailY {1}".format(cailX,cailY))
                             if salle[cailX+1, cailY] == 0 or salle[cailX+1, cailY] == 3 or salle[cailX+1, cailY] == 6:
                                 verifc=1
                                 salle[cailX+1, cailY] = 2
@@ -86,8 +86,7 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                             if event.key == pygame.K_ESCAPE:
                                 if debug ==1:
                                     print("\nArrêt")
-                                pygame.quit()
-                                quit()
+                                return niveau, wdw, 0
                     tour, curXpast, curYpast, npdt, npdtp, porte = refresh(wdw, debug, salle, curX, curY, mur, sol, flag, rock, win, defeat, spike, setr, door, buton, perso1, perso2, perso3, perso4, etat, tour, curXpast, curYpast, npdt, npdtp, porte)
                 if event.key == pygame.K_UP:
                     etat = 2
@@ -100,7 +99,7 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                         cailX, cailY = curX, curY
                         while verifc==0:
                             if debug == 1 :
-                                print("\ncailX {0}\ncailY {1}".format(cailX,cailY))
+                                print("cailX {0}\ncailY {1}".format(cailX,cailY))
                             if salle[cailX-1, cailY] == 0 or salle[cailX-1, cailY] == 3 or salle[cailX-1, cailY] == 6:
                                 verifc=1
                                 salle[cailX-1, cailY] = 2
@@ -121,15 +120,14 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                             if event.key == pygame.K_ESCAPE:
                                 if debug ==1:
                                     print("\nArrêt")
-                                pygame.quit()
-                                quit()
+                                return niveau, wdw, 0
                     if salle[curX, curY] == 8:
                         salle[curX, curY] = 5
                         verifc=0
                         cailX, cailY = curX, curY
                         while verifc==0:
                             if debug == 1 :
-                                print("\ncailX {0}\ncailY {1}".format(cailX,cailY))
+                                print("cailX {0}\ncailY {1}".format(cailX,cailY))
                             if salle[cailX-1, cailY] == 0 or salle[cailX-1, cailY] == 3 or salle[cailX-1, cailY] == 6:
                                 verifc=1
                                 salle[cailX-1, cailY] = 2
@@ -150,8 +148,7 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                             if event.key == pygame.K_ESCAPE:
                                 if debug ==1:
                                     print("\nArrêt")
-                                pygame.quit()
-                                quit()
+                                return niveau, wdw, 0
                     tour, curXpast, curYpast, npdt, npdtp, porte = refresh(wdw, debug, salle, curX, curY, mur, sol, flag, rock, win, defeat, spike, setr, door, buton, perso1, perso2, perso3, perso4, etat, tour, curXpast, curYpast, npdt, npdtp, porte)
                 if event.key == pygame.K_LEFT:
                     etat = 3
@@ -164,7 +161,7 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                         cailX, cailY = curX, curY
                         while verifc==0:
                             if debug == 1 :
-                                print("\ncailX {0}\ncailY {1}".format(cailX,cailY))
+                                print("cailX {0}\ncailY {1}".format(cailX,cailY))
                             if salle[cailX, cailY-1] == 0 or salle[cailX, cailY-1] == 3 or salle[cailX, cailY-1] == 6:
                                 verifc=1
                                 salle[cailX, cailY-1] = 2
@@ -185,15 +182,14 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                             if event.key == pygame.K_ESCAPE:
                                 if debug ==1:
                                     print("\nArrêt")
-                                pygame.quit()
-                                quit()
+                                return niveau, wdw, 0
                     if salle[curX, curY] == 8:
                         salle[curX, curY] = 5
                         verifc=0
                         cailX, cailY = curX, curY
                         while verifc==0:
                             if debug == 1 :
-                                print("\ncailX {0}\ncailY {1}".format(cailX,cailY))
+                                print("cailX {0}\ncailY {1}".format(cailX,cailY))
                             if salle[cailX, cailY-1] == 0 or salle[cailX, cailY-1] == 3 or salle[cailX, cailY-1] == 6:
                                 verifc=1
                                 salle[cailX, cailY-1] = 2
@@ -214,8 +210,7 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                             if event.key == pygame.K_ESCAPE:
                                 if debug ==1:
                                     print("\nArrêt")
-                                pygame.quit()
-                                quit()
+                                return niveau, wdw, 0
                     tour, curXpast, curYpast, npdt, npdtp, porte = refresh(wdw, debug, salle, curX, curY, mur, sol, flag, rock, win, defeat, spike, setr, door, buton, perso1, perso2, perso3, perso4, etat, tour, curXpast, curYpast, npdt, npdtp, porte)
                 if event.key == pygame.K_RIGHT:
                     etat = 4 
@@ -228,7 +223,7 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                         cailX, cailY = curX, curY
                         while verifc==0:
                             if debug == 1 :
-                                print("\ncailX {0}\ncailY {1}".format(cailX,cailY))
+                                print("cailX {0}\ncailY {1}".format(cailX,cailY))
                             if salle[cailX, cailY+1] == 0 or salle[cailX, cailY+1] == 3 or salle[cailX, cailY+1] == 6:
                                 verifc=1
                                 salle[cailX, cailY+1] = 2
@@ -249,15 +244,14 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                             if event.key == pygame.K_ESCAPE:
                                 if debug ==1:
                                     print("\nArrêt")
-                                pygame.quit()
-                                quit()
+                                return niveau, wdw, 0
                     if salle[curX, curY] == 8:
                         salle[curX, curY] = 5
                         verifc=0
                         cailX, cailY = curX, curY
                         while verifc==0:
                             if debug == 1 :
-                                print("\ncailX {0}\ncailY {1}".format(cailX,cailY))
+                                print("cailX {0}\ncailY {1}".format(cailX,cailY))
                             if salle[cailX, cailY+1] == 0 or salle[cailX, cailY+1] == 3 or salle[cailX, cailY+1] == 6:
                                 verifc=1
                                 salle[cailX, cailY+1] = 2
@@ -278,13 +272,13 @@ def gameplay(curX, curY, wdw, salle, porte, etat, debug, tour, curXpast, curYpas
                             if event.key == pygame.K_ESCAPE:
                                 if debug ==1:
                                     print("\nArrêt")
-                                pygame.quit()
-                                quit()
+                                return niveau, wdw, 0
                     tour, curXpast, curYpast, npdt, npdtp, porte = refresh(wdw, debug, salle, curX, curY, mur, sol, flag, rock, win, defeat, spike, setr, door, buton, perso1, perso2, perso3, perso4, etat, tour, curXpast, curYpast, npdt, npdtp, porte)
                 if event.key == pygame.K_ESCAPE:
                     if debug ==1:
                         print("\nArrêt")
-                    pygame.quit()
-                    quit()
+                    return niveau, wdw, 0
                 if salle[curX, curY] == 3:
-                    finilevel(niveau, wdw, win)
+                    return niveau, wdw, 1
+                if salle[curX, curY] == 4:
+                    return niveau, wdw, 2
